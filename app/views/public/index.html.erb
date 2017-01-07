@@ -9,9 +9,10 @@
 		</div>
 		<div class="col s6">
 			<div class="card display-card center">
-				asdf
+				<div class="output_div2"></div>
 			</div>
 		</div>
+		<btn class="btn light-blue-wave translate-btn">Translate</btn>
 	</div>
 </div>
 
@@ -33,10 +34,30 @@
 		});
 	}
 
-	
+	function readTranslated(){
+		var lines=''
+		$.ajax({
+			url: '../sample2.txt',
+			dataType: 'text',
+			success: function(data){
+				lines = data.split('\n');
+				var s = '';
+				for (var i=0;i<lines.length;i+=2){
+					s=s+lines[i]+' ';
+				}
+				$('.output_div2').html(s);
+			}
+		});
+	}
 	$(document).ready(function(){
 		
-		readText();			
+		readText();	
+		readTranslated();	
+		$(".translate-btn").click(function(){
+			readText();
+			readTranslated();
+		});
+	
 	});
 </script>
 
