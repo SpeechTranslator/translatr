@@ -1,0 +1,42 @@
+<div class="container">
+
+	<div class="row">
+		<h2 class="center">Header</h2>
+		<div class="col s6">
+			<div class="card display-card center">
+				<div class="output_div"></div>
+			</div>
+		</div>
+		<div class="col s6">
+			<div class="card display-card center">
+				asdf
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+
+	function readText(){
+		var lines=''
+		$.ajax({
+			url: '../sample1.txt',
+			dataType: 'text',
+			success: function(data){
+				lines = data.split('\n');
+				var s = '';
+				for (var i=0;i<lines.length;i+=2){
+					s=s+lines[i]+' ';
+				}
+				$('.output_div').html(s);
+			}
+		});
+	}
+
+	
+	$(document).ready(function(){
+		
+		readText();			
+	});
+</script>
+
